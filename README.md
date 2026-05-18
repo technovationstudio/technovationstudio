@@ -49,9 +49,8 @@ We utilize industry-standard, modern, and high-performance technologies to build
 
 Ready to build something amazing or need help fixing a stubborn bug? Let's collaborate!
 
-* **Email:** inquiries@technovation.studio *(placeholder)*
-* **GitHub:** [github.com/technovation-studio](https://github.com/technovation-studio) *(placeholder)*
-* **Portfolio/Website:** [technovation.studio](https://technovation.studio) *(placeholder)*
+* **Email:** technovation.coder@gmail.com
+* **GitHub:** [github.com/technovationstudio](https://github.com/technovationstudio)
 
 ---
 *Forming concepts into robust digital innovations. Built with passion by **TECHNOVATION Studio**.*
