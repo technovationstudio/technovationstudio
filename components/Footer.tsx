@@ -2,9 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const anchor = (hash: string) => (pathname === "/" ? hash : `/${hash}`);
   return (
     <footer className="bg-surface border-t border-border pt-16 pb-12 text-foreground-muted text-xs font-mono relative z-10">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,27 +52,27 @@ export default function Footer() {
             </div>
             <ul className="space-y-2 text-foreground-muted">
               <li>
-                <a href="#services" className="hover:text-foreground transition-colors">
+                <a href={anchor("#services")} className="hover:text-foreground transition-colors">
                   Core Capabilities
                 </a>
               </li>
               <li>
-                <a href="#work" className="hover:text-foreground transition-colors">
+                <a href={anchor("#work")} className="hover:text-foreground transition-colors">
                   Selected Portfolio
                 </a>
               </li>
               <li>
-                <a href="#process" className="hover:text-foreground transition-colors">
+                <a href={anchor("#process")} className="hover:text-foreground transition-colors">
                   Sprint Workflow
                 </a>
               </li>
               <li>
-                <a href="#founders" className="hover:text-foreground transition-colors">
+                <a href={anchor("#founders")} className="hover:text-foreground transition-colors">
                   About Founders
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-foreground transition-colors">
+                <a href={anchor("#contact")} className="hover:text-foreground transition-colors">
                   Inquire Studio
                 </a>
               </li>
