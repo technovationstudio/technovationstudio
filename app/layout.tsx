@@ -105,7 +105,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-[#090D16] text-[#F8FAFC] antialiased selection:bg-[#06B6D4]/30 selection:text-[#06B6D4] flex flex-col font-sans">
+      <body className="min-h-screen bg-background text-foreground antialiased selection:bg-accent/30 selection:text-accent-foreground flex flex-col font-sans">
         {children}
       </body>
     </html>

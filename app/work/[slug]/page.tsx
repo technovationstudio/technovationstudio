@@ -60,7 +60,7 @@ export default async function CaseStudyPage({
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <div className="min-h-screen bg-[#090D16] text-[#F8FAFC] flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-1 pt-32 pb-24">
@@ -69,7 +69,7 @@ export default async function CaseStudyPage({
           <div className="mb-8">
             <Link
               href="/#work"
-              className="inline-flex items-center gap-2 text-xs font-mono text-[#06B6D4] hover:text-[#22D3EE] transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono text-accent hover:text-accent/80 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Selected Work</span>
@@ -79,19 +79,19 @@ export default async function CaseStudyPage({
           {/* Header */}
           <div className="mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="px-2.5 py-1 rounded-full bg-[#06B6D4]/10 border border-[#06B6D4]/30 text-[#06B6D4] text-[11px] font-mono tracking-wider">
+              <span className="px-2.5 py-1 rounded-full bg-surface border border-border text-foreground-muted text-[11px] font-mono tracking-wider">
                 {project.category}
               </span>
-              <span className="text-xs font-mono text-[#64748B]">{project.date}</span>
-              <span className="text-xs font-mono text-[#64748B]">•</span>
-              <span className="text-xs font-mono text-[#94A3B8]">{project.client}</span>
+              <span className="text-xs font-mono text-foreground-faint">{project.date}</span>
+              <span className="text-xs font-mono text-foreground-faint">•</span>
+              <span className="text-xs font-mono text-foreground-muted">{project.client}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4 leading-[1.15]">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.15]">
               {project.title}
             </h1>
 
-            <p className="text-lg text-[#94A3B8] leading-relaxed max-w-3xl">
+            <p className="text-lg text-foreground-muted leading-relaxed max-w-3xl">
               {project.fullDescription}
             </p>
           </div>
@@ -101,39 +101,39 @@ export default async function CaseStudyPage({
             {project.metrics.map((m, i) => (
               <div
                 key={i}
-                className="bg-[#111827]/80 backdrop-blur-md border border-[#1E293B] rounded-xl p-5"
+                className="bg-surface-elevated/80 backdrop-blur-md border border-border rounded-xl p-5"
               >
-                <div className="text-3xl font-semibold font-mono text-[#06B6D4] mb-1">
+                <div className={`text-3xl font-semibold font-mono mb-1 ${i === 0 ? "text-accent" : "text-foreground"}`}>
                   {m.value}
                 </div>
-                <div className="text-xs font-mono text-white uppercase tracking-wider mb-1">
+                <div className="text-xs font-mono text-foreground uppercase tracking-wider mb-1">
                   {m.label}
                 </div>
                 {m.subtext && (
-                  <div className="text-[11px] font-mono text-[#64748B]">{m.subtext}</div>
+                  <div className="text-[11px] font-mono text-foreground-faint">{m.subtext}</div>
                 )}
               </div>
             ))}
           </div>
 
           {/* Architecture & Solution Blueprint */}
-          <div className="bg-[#111827]/80 border border-[#1E293B] rounded-2xl p-6 sm:p-8 mb-12">
-            <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#7C3AED]" />
+          <div className="bg-surface-elevated/80 border border-border rounded-2xl p-6 sm:p-8 mb-12">
+            <h2 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Layers className="w-5 h-5 text-accent" />
               <span>{project.architecture.title}</span>
             </h2>
 
             {project.architecture.diagramLabel && (
-              <div className="p-3 rounded-lg bg-[#090D16] border border-[#1E293B] text-xs font-mono text-[#06B6D4] mb-6 overflow-x-auto">
-                <span className="text-[#64748B] mr-2">FLOW:</span>
+              <div className="p-3 rounded-lg bg-surface border border-border text-xs font-mono text-accent mb-6 overflow-x-auto">
+                <span className="text-foreground-faint mr-2">FLOW:</span>
                 {project.architecture.diagramLabel}
               </div>
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.architecture.points.map((pt, i) => (
-                <div key={i} className="flex items-start gap-2.5 text-xs text-[#94A3B8]">
-                  <CheckCircle2 className="w-4 h-4 text-[#06B6D4] shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start gap-2.5 text-xs text-foreground-muted">
+                  <CheckCircle2 className="w-4 h-4 text-foreground-muted shrink-0 mt-0.5" />
                   <span>{pt}</span>
                 </div>
               ))}
@@ -142,36 +142,36 @@ export default async function CaseStudyPage({
 
           {/* Challenge & Solution 2-Column */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-[#111827]/50 border border-[#1E293B] rounded-xl p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-rose-500" />
+            <div className="bg-surface-elevated/50 border border-border rounded-xl p-6 sm:p-8">
+              <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-foreground-muted" />
                 The Core Bottleneck
               </h3>
-              <p className="text-sm text-[#94A3B8] leading-relaxed">{project.challenge}</p>
+              <p className="text-sm text-foreground-muted leading-relaxed">{project.challenge}</p>
             </div>
 
-            <div className="bg-[#111827]/50 border border-[#1E293B] rounded-xl p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <div className="bg-surface-elevated/50 border border-border rounded-xl p-6 sm:p-8">
+              <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-accent" />
                 The Engineered Solution
               </h3>
-              <p className="text-sm text-[#94A3B8] leading-relaxed">{project.solution}</p>
+              <p className="text-sm text-foreground-muted leading-relaxed">{project.solution}</p>
             </div>
           </div>
 
           {/* Code Implementation Snippet */}
           {project.codeSnippet && (
             <div className="mb-16">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Terminal className="w-5 h-5 text-[#06B6D4]" />
+              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Terminal className="w-5 h-5 text-accent" />
                 <span>Production Architecture Implementation</span>
               </h3>
-              <div className="rounded-xl bg-[#090D16] border border-[#1E293B] p-5 font-mono text-xs overflow-x-auto shadow-2xl">
-                <div className="text-[#64748B] text-[11px] mb-3 pb-2 border-b border-[#1E293B] flex items-center justify-between">
+              <div className="rounded-xl bg-surface border border-border p-5 font-mono text-xs overflow-x-auto shadow-2xl">
+                <div className="text-foreground-faint text-[11px] mb-3 pb-2 border-b border-border flex items-center justify-between">
                   <span>{project.codeSnippet.filename}</span>
-                  <span className="text-[#06B6D4]">TypeScript / Next.js</span>
+                  <span className="text-accent">TypeScript / Next.js</span>
                 </div>
-                <pre className="text-[#DFE2EF] leading-relaxed">
+                <pre className="text-foreground leading-relaxed">
                   <code>{project.codeSnippet.code}</code>
                 </pre>
               </div>
@@ -180,18 +180,18 @@ export default async function CaseStudyPage({
 
           {/* Tech Stack Matrix */}
           <div className="mb-16">
-            <h3 className="text-lg font-semibold text-white mb-4">Technology Stack</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Technology Stack</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {project.techStack.map((stack, i) => (
-                <div key={i} className="p-4 rounded-xl bg-[#111827]/60 border border-[#1E293B]">
-                  <div className="text-[11px] font-mono text-[#64748B] uppercase mb-2">
+                <div key={i} className="p-4 rounded-xl bg-surface-elevated/60 border border-border">
+                  <div className="text-[11px] font-mono text-foreground-faint uppercase mb-2">
                     {stack.category}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {stack.items.map((item, j) => (
                       <span
                         key={j}
-                        className="px-2 py-0.5 rounded bg-[#090D16] border border-[#1E293B] text-xs font-mono text-[#DFE2EF]"
+                        className="px-2 py-0.5 rounded bg-surface border border-border text-xs font-mono text-foreground-muted"
                       >
                         {item}
                       </span>
@@ -203,27 +203,27 @@ export default async function CaseStudyPage({
           </div>
 
           {/* Client Testimonial Quote */}
-          <div className="p-8 rounded-2xl bg-[#111827]/80 border border-[#1E293B] mb-16 relative overflow-hidden">
+          <div className="p-8 rounded-2xl bg-surface-elevated/80 border border-border mb-16 relative overflow-hidden">
             <div className="flex items-center gap-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B] drop-shadow-[0_0_6px_rgba(245,158,11,0.5)]"
+                  className="w-4 h-4 fill-foreground-muted text-foreground-muted"
                 />
               ))}
             </div>
-            <p className="text-base sm:text-lg text-white italic leading-relaxed mb-6 font-normal">
+            <p className="text-base sm:text-lg text-foreground italic leading-relaxed mb-6 font-normal">
               &ldquo;{project.testimonial.quote}&rdquo;
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#7C3AED] flex items-center justify-center font-mono font-bold text-white text-xs">
+              <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center font-mono font-bold text-accent-foreground text-xs">
                 {project.testimonial.avatarInitials}
               </div>
               <div>
-                <div className="text-sm font-semibold text-white">
+                <div className="text-sm font-semibold text-foreground">
                   {project.testimonial.author}
                 </div>
-                <div className="text-xs font-mono text-[#94A3B8]">
+                <div className="text-xs font-mono text-foreground-muted">
                   {project.testimonial.role}, {project.testimonial.company}
                 </div>
               </div>
@@ -231,21 +231,21 @@ export default async function CaseStudyPage({
           </div>
 
           {/* Next Project & Bottom CTA */}
-          <div className="border-t border-[#1E293B] pt-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="border-t border-border pt-12 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <div className="text-xs font-mono text-[#64748B] uppercase mb-1">Next Case Study</div>
+              <div className="text-xs font-mono text-foreground-faint uppercase mb-1">Next Case Study</div>
               <Link
                 href={`/work/${nextProject.slug}`}
-                className="text-base font-semibold text-white hover:text-[#06B6D4] flex items-center gap-2"
+                className="text-base font-semibold text-foreground hover:text-accent flex items-center gap-2"
               >
                 <span>{nextProject.title}</span>
-                <ArrowRight className="w-4 h-4 text-[#06B6D4]" />
+                <ArrowRight className="w-4 h-4 text-accent" />
               </Link>
             </div>
 
             <Link
               href="/#contact"
-              className="px-6 py-3 rounded-lg bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-sm font-medium font-mono transition-all shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+              className="px-6 py-3 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground text-xs sm:text-sm font-medium font-mono transition-all"
             >
               Discuss Your Architecture With Founders →
             </Link>

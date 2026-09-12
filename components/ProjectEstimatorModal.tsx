@@ -75,22 +75,22 @@ export default function ProjectEstimatorModal({
       : "$50k+";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#090D16]/85 backdrop-blur-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/85 backdrop-blur-xl">
       <div
-        className="w-full max-w-2xl rounded-2xl bg-[#111827] border border-[#1E293B] shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden"
+        className="w-full max-w-2xl rounded-2xl bg-surface-elevated border border-border shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#1E293B] flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Calculator className="w-4 h-4 text-[#06B6D4]" />
-            <span className="text-xs font-mono tracking-wider text-white uppercase">
+            <Calculator className="w-4 h-4 text-accent" />
+            <span className="text-xs font-mono tracking-wider text-foreground uppercase">
               Interactive Sprint Estimator
             </span>
           </div>
           <button
             onClick={onClose}
-            className="text-[#64748B] hover:text-white p-1 rounded hover:bg-[#1E293B]"
+            className="text-foreground-faint hover:text-foreground p-1 rounded hover:bg-border"
           >
             <X className="w-5 h-5" />
           </button>
@@ -99,7 +99,7 @@ export default function ProjectEstimatorModal({
         <div className="p-6 space-y-6">
           {/* Project Type */}
           <div>
-            <label className="text-[11px] font-mono text-[#64748B] uppercase block mb-2">
+            <label className="text-[11px] font-mono text-foreground-faint uppercase block mb-2">
               1. Project Category
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -115,8 +115,8 @@ export default function ProjectEstimatorModal({
                   onClick={() => setProjectType(item.id)}
                   className={`p-2.5 rounded-lg border text-xs font-mono text-center transition-all ${
                     projectType === item.id
-                      ? "bg-[#7C3AED]/20 border-[#7C3AED] text-white"
-                      : "bg-[#090D16] border-[#1E293B] text-[#94A3B8] hover:border-[#334155]"
+                      ? "bg-accent-muted border-accent text-foreground"
+                      : "bg-surface border-border text-foreground-muted hover:border-border-strong"
                   }`}
                 >
                   {item.label}
@@ -127,7 +127,7 @@ export default function ProjectEstimatorModal({
 
           {/* Deliverables / Scope */}
           <div>
-            <label className="text-[11px] font-mono text-[#64748B] uppercase block mb-2">
+            <label className="text-[11px] font-mono text-foreground-faint uppercase block mb-2">
               2. Core Capabilities Needed
             </label>
             <div className="grid grid-cols-2 gap-2 text-xs font-mono">
@@ -136,12 +136,12 @@ export default function ProjectEstimatorModal({
                 onClick={() => setHasAuth(!hasAuth)}
                 className={`p-2.5 rounded-lg border flex items-center justify-between ${
                   hasAuth
-                    ? "bg-[#06B6D4]/15 border-[#06B6D4] text-white"
-                    : "bg-[#090D16] border-[#1E293B] text-[#64748B]"
+                    ? "bg-accent-muted border-accent text-foreground"
+                    : "bg-surface border-border text-foreground-faint"
                 }`}
               >
                 <span>Auth &amp; RBAC Security</span>
-                {hasAuth && <Check className="w-3.5 h-3.5 text-[#06B6D4]" />}
+                {hasAuth && <Check className="w-3.5 h-3.5 text-accent" />}
               </button>
 
               <button
@@ -149,12 +149,12 @@ export default function ProjectEstimatorModal({
                 onClick={() => setHasBilling(!hasBilling)}
                 className={`p-2.5 rounded-lg border flex items-center justify-between ${
                   hasBilling
-                    ? "bg-[#06B6D4]/15 border-[#06B6D4] text-white"
-                    : "bg-[#090D16] border-[#1E293B] text-[#64748B]"
+                    ? "bg-accent-muted border-accent text-foreground"
+                    : "bg-surface border-border text-foreground-faint"
                 }`}
               >
                 <span>Stripe Billing &amp; Subscriptions</span>
-                {hasBilling && <Check className="w-3.5 h-3.5 text-[#06B6D4]" />}
+                {hasBilling && <Check className="w-3.5 h-3.5 text-accent" />}
               </button>
 
               <button
@@ -162,12 +162,12 @@ export default function ProjectEstimatorModal({
                 onClick={() => setHasRealtime(!hasRealtime)}
                 className={`p-2.5 rounded-lg border flex items-center justify-between ${
                   hasRealtime
-                    ? "bg-[#06B6D4]/15 border-[#06B6D4] text-white"
-                    : "bg-[#090D16] border-[#1E293B] text-[#64748B]"
+                    ? "bg-accent-muted border-accent text-foreground"
+                    : "bg-surface border-border text-foreground-faint"
                 }`}
               >
                 <span>WebSockets &amp; Real-time Streams</span>
-                {hasRealtime && <Check className="w-3.5 h-3.5 text-[#06B6D4]" />}
+                {hasRealtime && <Check className="w-3.5 h-3.5 text-accent" />}
               </button>
 
               <button
@@ -175,19 +175,19 @@ export default function ProjectEstimatorModal({
                 onClick={() => setHasDesignSystem(!hasDesignSystem)}
                 className={`p-2.5 rounded-lg border flex items-center justify-between ${
                   hasDesignSystem
-                    ? "bg-[#06B6D4]/15 border-[#06B6D4] text-white"
-                    : "bg-[#090D16] border-[#1E293B] text-[#64748B]"
+                    ? "bg-accent-muted border-accent text-foreground"
+                    : "bg-surface border-border text-foreground-faint"
                 }`}
               >
                 <span>Custom Tailwind Design System</span>
-                {hasDesignSystem && <Check className="w-3.5 h-3.5 text-[#06B6D4]" />}
+                {hasDesignSystem && <Check className="w-3.5 h-3.5 text-accent" />}
               </button>
             </div>
           </div>
 
           {/* Speed */}
           <div>
-            <label className="text-[11px] font-mono text-[#64748B] uppercase block mb-2">
+            <label className="text-[11px] font-mono text-foreground-faint uppercase block mb-2">
               3. Delivery Velocity
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -196,12 +196,12 @@ export default function ProjectEstimatorModal({
                 onClick={() => setSpeed("standard")}
                 className={`p-3 rounded-lg border text-xs font-mono text-left ${
                   speed === "standard"
-                    ? "bg-[#111827] border-[#06B6D4] text-white"
-                    : "bg-[#090D16] border-[#1E293B] text-[#64748B]"
+                    ? "bg-surface-elevated border-accent text-foreground"
+                    : "bg-surface border-border text-foreground-faint"
                 }`}
               >
-                <div className="font-semibold text-white">Standard Cadence</div>
-                <div className="text-[11px] text-[#94A3B8]">Iterative weekly releases</div>
+                <div className="font-semibold text-foreground">Standard Cadence</div>
+                <div className="text-[11px] text-foreground-muted">Iterative weekly releases</div>
               </button>
 
               <button
@@ -209,31 +209,31 @@ export default function ProjectEstimatorModal({
                 onClick={() => setSpeed("accelerated")}
                 className={`p-3 rounded-lg border text-xs font-mono text-left ${
                   speed === "accelerated"
-                    ? "bg-[#7C3AED]/20 border-[#7C3AED] text-white"
-                    : "bg-[#090D16] border-[#1E293B] text-[#64748B]"
+                    ? "bg-accent-muted border-accent text-foreground"
+                    : "bg-surface border-border text-foreground-faint"
                 }`}
               >
-                <div className="font-semibold text-white flex items-center gap-1">
+                <div className="font-semibold text-foreground flex items-center gap-1">
                   <span>Accelerated Blitz</span>
-                  <Sparkles className="w-3 h-3 text-[#FFB784]" />
+                  <Sparkles className="w-3 h-3 text-accent" />
                 </div>
-                <div className="text-[11px] text-[#94A3B8]">Dedicated dual-founder focus</div>
+                <div className="text-[11px] text-foreground-muted">Dedicated dual-founder focus</div>
               </button>
             </div>
           </div>
 
           {/* Results calculation display */}
-          <div className="p-4 rounded-xl bg-[#090D16] border border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="p-4 rounded-xl bg-surface border border-border flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <div className="text-[10px] font-mono text-[#64748B] uppercase">ESTIMATED TIMELINE</div>
-              <div className="text-xl font-bold font-mono text-white">
+              <div className="text-[10px] font-mono text-foreground-faint uppercase">ESTIMATED TIMELINE</div>
+              <div className="text-xl font-bold font-mono text-foreground">
                 ~{baseWeeks} Weeks to Production
               </div>
             </div>
 
             <div className="sm:text-right">
-              <div className="text-[10px] font-mono text-[#64748B] uppercase">ESTIMATED INVESTMENT</div>
-              <div className="text-xl font-bold font-mono text-[#06B6D4]">
+              <div className="text-[10px] font-mono text-foreground-faint uppercase">ESTIMATED INVESTMENT</div>
+              <div className="text-xl font-bold font-mono text-accent">
                 ~${basePrice.toLocaleString()} ({estimatedBudgetRange})
               </div>
             </div>
@@ -247,7 +247,7 @@ export default function ProjectEstimatorModal({
               const contactEl = document.getElementById("contact");
               contactEl?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-full py-3 rounded-lg bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+            className="w-full py-3 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground font-mono text-xs flex items-center justify-center gap-2 cursor-pointer transition-all"
           >
             <span>Apply Estimate to Technical Brief</span>
             <ArrowRight className="w-4 h-4" />

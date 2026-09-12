@@ -1,44 +1,42 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   DESIGN TOKENS — single source of truth for the theme.
+   Edit ONLY this block to re-theme the whole site (e.g. swap --color-accent).
+   All components must reference these semantic tokens, never hardcoded hex.
+   ========================================================================== */
 @theme {
+  /* Neutrals — true-black monochrome base ("Deep Space"). */
+  --color-background: #000000; /* page base             */
+  --color-surface: #0a0a0a; /* cards, code blocks, inputs */
+  --color-surface-elevated: #111111; /* raised panels, modals, nav buttons */
+  --color-border: #262626; /* hairlines: dividers, badges, subtle outlines */
+  --color-border-strong: #404040; /* hover/focus border (brighter neutral) */
+
+  /* Text — hierarchy via contrast only, not color. */
+  --color-foreground: #ffffff; /* primary text / titles        */
+  --color-foreground-muted: #a3a3a3; /* secondary text, body copy, badges */
+  --color-foreground-faint: #737373; /* tertiary labels, placeholders      */
+
+  /* Brand — the single accent (violet, from the logo). Used sparingly. */
+  --color-accent: #6d28d9; /* the ONLY accent color of the brand */
+  --color-accent-muted: #6d28d940; /* 25% violet tint: chips, selected states */
+  --color-accent-foreground: #ffffff; /* text on top of solid accent (CTAs)    */
+
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
-
-  --color-midnight: #090d16;
-  --color-obsidian: #111827;
-  --color-card-dark: #0f172a;
-  --color-card-darker: #0c1220;
-  --color-border-subtle: #1e293b;
-  --color-border-bright: #334155;
-  --color-violet-brand: #7c3aed;
-  --color-violet-glow: #8b5cf6;
-  --color-cyan-brand: #06b6d4;
-  --color-silver-light: #f8fafc;
-  --color-slate-subtle: #94a3b8;
-  --color-slate-dark: #64748b;
 }
 
 @layer base {
-  :root {
-    --bg-midnight: #090d16;
-    --surface-dark: #0f172a;
-    --surface-card: #111827;
-    --accent-violet: #7c3aed;
-    --accent-cyan: #06b6d4;
-    --text-primary: #f8fafc;
-    --text-muted: #94a3b8;
-    --border-subtle: #1e293b;
-  }
-
   html {
     color-scheme: dark;
     scroll-behavior: smooth;
-    background-color: #090d16;
+    background-color: var(--color-background);
   }
 
   body {
-    background-color: #090d16;
-    color: #f8fafc;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
@@ -47,65 +45,24 @@
   }
 
   ::selection {
-    background-color: rgba(6, 182, 212, 0.25);
-    color: #06b6d4;
+    background-color: var(--color-accent-muted);
+    color: var(--color-accent-foreground);
   }
 }
 
 /* Glassmorphism Surface */
 .glass-panel {
-  background: rgba(17, 24, 39, 0.75);
+  background: rgba(17, 17, 17, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #1e293b;
+  border: 1px solid var(--color-border);
 }
 
 .glass-nav {
-  background: rgba(9, 13, 22, 0.85);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(30, 41, 59, 0.7);
-}
-
-/* Ambient Glow Shadows */
-.glow-purple {
-  box-shadow: 0 0 40px -10px rgba(124, 58, 237, 0.35);
-}
-
-.glow-cyan {
-  box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.3);
-}
-
-.glow-card {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glow-card:hover {
-  border-color: rgba(124, 58, 237, 0.5);
-  box-shadow: 0 0 35px -5px rgba(124, 58, 237, 0.2), 0 0 15px -3px rgba(6, 182, 212, 0.12);
-  transform: translateY(-2px);
-}
-
-/* Gradient Text Effect */
-.text-gradient {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #a855f7 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-cyan {
-  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 50%, #0284c7 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-violet {
-  background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7c3aed 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid rgba(38, 38, 38, 0.7);
 }
 
 /* Custom Sleek Dark Scrollbar */
@@ -114,28 +71,28 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--color-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed;
+  background: var(--color-accent);
 }
 
-/* Background Cyber Grid Pattern */
+/* Background Cyber Grid Pattern (subtle, monochrome, ≤5% visual weight) */
 .bg-grid-cyber {
   background-size: 48px 48px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
 }
 
 .bg-dots-cyber {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 

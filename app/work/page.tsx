@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="min-h-screen bg-[#090D16] text-[#F8FAFC] flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-1 pt-32 pb-24">
@@ -22,7 +22,7 @@ export default function WorkPage() {
           <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-mono text-[#06B6D4] hover:text-[#22D3EE]"
+              className="inline-flex items-center gap-2 text-xs font-mono text-accent hover:text-accent/80"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
@@ -30,14 +30,14 @@ export default function WorkPage() {
           </div>
 
           <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111827] border border-[#1E293B] text-[#06B6D4] text-xs font-mono mb-4">
-              <Layers className="w-3.5 h-3.5 text-[#06B6D4]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-elevated border border-border text-foreground-muted text-xs font-mono mb-4">
+              <Layers className="w-3.5 h-3.5 text-accent" />
               SELECTED CASE STUDIES
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4">
               Proven Systems In Production
             </h1>
-            <p className="text-base text-[#94A3B8]">
+            <p className="text-base text-foreground-muted">
               Browse detailed engineering write-ups documenting real technical challenges,
               architectural decisions, code snippets, and quantifiable business outcomes.
             </p>
@@ -47,19 +47,19 @@ export default function WorkPage() {
             {projects.map((p) => (
               <div
                 key={p.slug}
-                className="bg-[#111827]/80 border border-[#1E293B] hover:border-[#7C3AED]/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_30px_rgba(124,58,237,0.15)] group"
+                className="bg-surface-elevated/80 border border-border hover:border-accent/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group"
               >
                 <div>
-                  <div className="flex items-center justify-between text-xs font-mono text-[#64748B] mb-4">
-                    <span className="text-[#06B6D4]">{p.category}</span>
+                  <div className="flex items-center justify-between text-xs font-mono text-foreground-faint mb-4">
+                    <span className="text-accent">{p.category}</span>
                     <span>{p.date}</span>
                   </div>
 
-                  <h2 className="text-xl font-semibold text-white mb-3 group-hover:text-[#F8FAFC]">
+                  <h2 className="text-xl font-semibold text-foreground mb-3 group-hover:text-foreground">
                     {p.title}
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-6 font-normal">
+                  <p className="text-xs sm:text-sm text-foreground-muted leading-relaxed mb-6 font-normal">
                     {p.description}
                   </p>
 
@@ -67,7 +67,7 @@ export default function WorkPage() {
                     {p.tags.map((t, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-0.5 rounded bg-[#090D16] border border-[#1E293B] text-[11px] font-mono text-[#94A3B8]"
+                        className="px-2 py-0.5 rounded bg-surface border border-border text-[11px] font-mono text-foreground-muted"
                       >
                         {t}
                       </span>
@@ -76,19 +76,19 @@ export default function WorkPage() {
                 </div>
 
                 <div>
-                  <div className="pt-4 border-t border-[#1E293B] flex items-center justify-between">
+                  <div className="pt-4 border-t border-border flex items-center justify-between">
                     <div>
-                      <div className="text-xl font-bold font-mono text-[#06B6D4]">
+                      <div className="text-xl font-bold font-mono text-accent">
                         {p.metrics[0].value}
                       </div>
-                      <div className="text-[10px] font-mono text-[#64748B] uppercase">
+                      <div className="text-[10px] font-mono text-foreground-faint uppercase">
                         {p.metrics[0].label}
                       </div>
                     </div>
 
                     <Link
                       href={`/work/${p.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-mono text-[#06B6D4] hover:text-[#22D3EE] group-hover:translate-x-0.5 transition-transform"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:text-accent/80 group-hover:translate-x-0.5 transition-transform"
                     >
                       <span>Read Case Study</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />

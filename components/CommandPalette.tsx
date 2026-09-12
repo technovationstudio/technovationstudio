@@ -160,25 +160,25 @@ export default function CommandPalette({
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 sm:pt-32 px-4 bg-[#090D16]/80 backdrop-blur-xl transition-all">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 sm:pt-32 px-4 bg-background/80 backdrop-blur-xl transition-all">
       <div
-        className="w-full max-w-xl rounded-xl bg-[#111827] border border-[#1E293B] shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden"
+        className="w-full max-w-xl rounded-xl bg-surface-elevated border border-border shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Header */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[#1E293B]">
-          <Search className="w-4 h-4 text-[#06B6D4]" />
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-border">
+          <Search className="w-4 h-4 text-accent" />
           <input
             type="text"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Type a command or jump to section..."
-            className="w-full bg-transparent text-sm text-white placeholder-[#64748B] focus:outline-none font-mono"
+            className="w-full bg-transparent text-sm text-foreground placeholder:text-foreground-faint focus:outline-none font-mono"
           />
           <button
             onClick={onClose}
-            className="text-[#64748B] hover:text-white p-1 rounded hover:bg-[#1E293B]"
+            className="text-foreground-faint hover:text-foreground p-1 rounded hover:bg-border"
           >
             <X className="w-4 h-4" />
           </button>
@@ -187,7 +187,7 @@ export default function CommandPalette({
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filtered.length === 0 ? (
-            <div className="p-6 text-center text-xs text-[#64748B] font-mono">
+            <div className="p-6 text-center text-xs text-foreground-faint font-mono">
               No results found for &ldquo;{query}&rdquo;
             </div>
           ) : (
@@ -197,13 +197,13 @@ export default function CommandPalette({
                 <button
                   key={item.id}
                   onClick={item.action}
-                  className="w-full flex items-center justify-between p-2.5 rounded-lg text-left text-xs text-[#94A3B8] hover:text-white hover:bg-[#090D16] border border-transparent hover:border-[#1E293B] transition-colors group cursor-pointer"
+                  className="w-full flex items-center justify-between p-2.5 rounded-lg text-left text-xs text-foreground-muted hover:text-foreground hover:bg-surface border border-transparent hover:border-border transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Icon className="w-4 h-4 text-[#06B6D4] group-hover:text-[#7C3AED] transition-colors" />
+                    <Icon className="w-4 h-4 text-foreground-muted group-hover:text-accent transition-colors" />
                     <span className="font-mono text-[13px]">{item.title}</span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#64748B] px-1.5 py-0.5 rounded bg-[#1E293B]">
+                  <span className="text-[10px] font-mono text-foreground-faint px-1.5 py-0.5 rounded bg-border">
                     {item.category}
                   </span>
                 </button>
@@ -213,7 +213,7 @@ export default function CommandPalette({
         </div>
 
         {/* Footer Hint */}
-        <div className="px-4 py-2 bg-[#090D16] border-t border-[#1E293B] flex items-center justify-between text-[11px] font-mono text-[#64748B]">
+        <div className="px-4 py-2 bg-surface border-t border-border flex items-center justify-between text-[11px] font-mono text-foreground-faint">
           <span>Navigation Shortcuts</span>
           <span>Press ESC to exit</span>
         </div>
