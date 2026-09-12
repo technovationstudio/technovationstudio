@@ -6,127 +6,144 @@
    All components must reference these semantic tokens, never hardcoded hex.
    ========================================================================== */
 @theme {
-  /* Neutrals — true-black monochrome base ("Deep Space"). */
-  --color-background: #000000; /* page base             */
-  --color-surface: #0a0a0a; /* cards, code blocks, inputs */
-  --color-surface-elevated: #111111; /* raised panels, modals, nav buttons */
-  --color-border: #262626; /* hairlines: dividers, badges, subtle outlines */
-  --color-border-strong: #404040; /* hover/focus border (brighter neutral) */
+	/* Neutrals — true-black monochrome base ("Deep Space"). */
+	--color-background: #000000; /* page base             */
+	--color-surface: #0a0a0a; /* cards, code blocks, inputs */
+	--color-surface-elevated: #111111; /* raised panels, modals, nav buttons */
+	--color-border: #262626; /* hairlines: dividers, badges, subtle outlines */
+	--color-border-strong: #404040; /* hover/focus border (brighter neutral) */
 
-  /* Text — hierarchy via contrast only, not color. */
-  --color-foreground: #ffffff; /* primary text / titles        */
-  --color-foreground-muted: #a3a3a3; /* secondary text, body copy, badges */
-  --color-foreground-faint: #737373; /* tertiary labels, placeholders      */
+	/* Text — hierarchy via contrast only, not color. */
+	--color-foreground: #ffffff; /* primary text / titles        */
+	--color-foreground-muted: #a3a3a3; /* secondary text, body copy, badges */
+	--color-foreground-faint: #737373; /* tertiary labels, placeholders      */
 
-  /* Brand — the single accent (violet, from the logo). Used sparingly. */
-  --color-accent: #6d28d9; /* the ONLY accent color of the brand */
-  --color-accent-muted: #6d28d940; /* 25% violet tint: chips, selected states */
-  --color-accent-foreground: #ffffff; /* text on top of solid accent (CTAs)    */
+	/* Brand — the single accent (violet, from the logo). Used sparingly. */
+	--color-accent: #6d28d9; /* the ONLY accent color of the brand */
+	--color-accent-muted: #6d28d940; /* 25% violet tint: chips, selected states */
+	--color-accent-foreground: #ffffff; /* text on top of solid accent (CTAs)    */
 
-  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), monospace;
+	--font-sans:
+		var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, sans-serif;
+	--font-mono: var(--font-jetbrains-mono), monospace;
 }
 
 @layer base {
-  html {
-    color-scheme: dark;
-    scroll-behavior: smooth;
-    background-color: var(--color-background);
-  }
+	html {
+		color-scheme: dark;
+		scroll-behavior: smooth;
+		background-color: var(--color-background);
+	}
 
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+	body {
+		background-color: var(--color-background);
+		color: var(--color-foreground);
+		font-family:
+			var(--font-geist-sans),
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Roboto,
+			sans-serif;
+		overflow-x: hidden;
+		min-height: 100vh;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
 
-  ::selection {
-    background-color: var(--color-accent-muted);
-    color: var(--color-accent-foreground);
-  }
+	::selection {
+		background-color: var(--color-accent-muted);
+		color: var(--color-accent-foreground);
+	}
 }
 
 /* Glassmorphism Surface */
 .glass-panel {
-  background: rgba(17, 17, 17, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--color-border);
+	background: rgba(17, 17, 17, 0.75);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid var(--color-border);
 }
 
 .glass-nav {
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(38, 38, 38, 0.7);
+	background: rgba(0, 0, 0, 0.85);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-bottom: 1px solid rgba(38, 38, 38, 0.7);
 }
 
 /* Custom Sleek Dark Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+	background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+	background: var(--color-border);
+	border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+	background: var(--color-accent);
 }
 
 /* Background Cyber Grid Pattern (subtle, monochrome, ≤5% visual weight) */
 .bg-grid-cyber {
-  background-size: 48px 48px;
-  background-image:
-    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+	background-size: 48px 48px;
+	background-image:
+		linear-gradient(
+			to right,
+			color-mix(in srgb, var(--color-border) 45%, transparent) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--color-border) 45%, transparent) 1px,
+			transparent 1px
+		);
 }
 
 .bg-dots-cyber {
-  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
-  background-size: 24px 24px;
+	background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+	background-size: 24px 24px;
 }
 
 /* Keyframe animations */
 @keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.25;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(1.05);
-  }
+	0%,
+	100% {
+		opacity: 0.25;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.45;
+		transform: scale(1.05);
+	}
 }
 
 .animate-pulse-glow {
-  animation: pulseGlow 6s ease-in-out infinite;
+	animation: pulseGlow 6s ease-in-out infinite;
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
 
 .animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 30s linear infinite;
+	display: flex;
+	width: 200%;
+	animation: marquee 30s linear infinite;
 }
 
 .animate-marquee:hover {
-  animation-play-state: paused;
+	animation-play-state: paused;
 }

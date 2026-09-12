@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Calendar, Command, Menu, X, ArrowUpRight } from "lucide-react";
 
 interface NavbarProps {
@@ -12,6 +13,8 @@ interface NavbarProps {
 export default function Navbar({ onOpenBooking, onOpenCommand }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const anchor = (hash: string) => (pathname === "/" ? hash : `/${hash}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +25,11 @@ export default function Navbar({ onOpenBooking, onOpenCommand }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "Process", href: "#process" },
-    { name: "Founders", href: "#founders" },
-    { name: "Contact", href: "#contact" },
+    { name: "Services", href: anchor("#services") },
+    { name: "Work", href: anchor("#work") },
+    { name: "Process", href: anchor("#process") },
+    { name: "Founders", href: anchor("#founders") },
+    { name: "Contact", href: anchor("#contact") },
   ];
 
   return (
