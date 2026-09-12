@@ -27,7 +27,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#090D16] text-[#F8FAFC] flex flex-col font-sans selection:bg-[#06B6D4]/25 selection:text-[#06B6D4] relative">
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans selection:bg-accent/30 selection:text-accent-foreground relative">
       {/* Pinned Sticky Glassmorphic Navbar */}
       <Navbar
         onOpenBooking={() => setBookingModalOpen(true)}

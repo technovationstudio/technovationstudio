@@ -19,7 +19,7 @@ export const testimonials: Testimonial[] = [
     role: "CTO",
     company: "Synapse AI",
     avatarInitials: "MK",
-    color: "#7C3AED",
+    color: "#6d28d9",
   },
   {
     id: "sarah-lin",
@@ -30,7 +30,7 @@ export const testimonials: Testimonial[] = [
     role: "Founder & CEO",
     company: "Vortex Financial",
     avatarInitials: "SL",
-    color: "#06B6D4",
+    color: "#6d28d9",
   },
   {
     id: "david-ross",
@@ -41,6 +41,6 @@ export const testimonials: Testimonial[] = [
     role: "VP of Product",
     company: "HyperScale",
     avatarInitials: "DR",
-    color: "#EA580C",
+    color: "#6d28d9",
   },
 ];

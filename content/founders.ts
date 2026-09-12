@@ -23,7 +23,7 @@ export const founders: Founder[] = [
     tagline: "UI, Design & User Experience",
     bio: "Frontend developer focused on building beautiful, easy-to-use interfaces. Specializes in turning complex data into clear charts and ensuring applications are accessible to everyone.",
     avatarPlaceholder: "IF",
-    avatarBg: "from-cyan-950/60 to-slate-900/80",
+    avatarBg: "from-surface to-background",
     skills: ["User Interface Design", "Data & Charts", "Accessibility"],
     metrics: [
       { label: "Focus", value: "User Experience" },
@@ -42,7 +42,7 @@ export const founders: Founder[] = [
     tagline: "Backend, Systems & Database",
     bio: "Backend developer dedicated to building the invisible engines that power applications. Specializes in setting up secure databases, connecting systems, and keeping servers running reliably.",
     avatarPlaceholder: "YM",
-    avatarBg: "from-purple-900/60 to-indigo-950/80",
+    avatarBg: "from-surface to-background",
     skills: ["Backend Systems", "Databases", "Server Reliability"],
     metrics: [
       { label: "Focus", value: "Infrastructure" },

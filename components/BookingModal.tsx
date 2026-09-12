@@ -24,22 +24,22 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#090D16]/80 backdrop-blur-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-xl">
       <div
-        className="w-full max-w-lg rounded-2xl bg-[#111827] border border-[#1E293B] shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden relative"
+        className="w-full max-w-lg rounded-2xl bg-surface-elevated border border-border shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#1E293B] flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#06B6D4] animate-ping" />
-            <span className="text-xs font-mono tracking-wider text-[#06B6D4] uppercase">
+            <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
+            <span className="text-xs font-mono tracking-wider text-accent uppercase">
               Schedule Technical Discovery Call
             </span>
           </div>
           <button
             onClick={onClose}
-            className="text-[#64748B] hover:text-white p-1 rounded hover:bg-[#1E293B]"
+            className="text-foreground-faint hover:text-foreground p-1 rounded hover:bg-border"
           >
             <X className="w-5 h-5" />
           </button>
@@ -47,18 +47,18 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
         {booked ? (
           <div className="p-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto text-emerald-400">
+            <div className="w-16 h-16 rounded-full bg-accent-muted border border-accent/40 flex items-center justify-center mx-auto text-accent">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="text-2xl font-semibold text-white">
+            <h3 className="text-2xl font-semibold text-foreground">
               Discovery Call Confirmed!
             </h3>
-            <p className="text-sm text-[#94A3B8] leading-relaxed max-w-sm mx-auto">
+            <p className="text-sm text-foreground-muted leading-relaxed max-w-sm mx-auto">
               We have reserved{" "}
-              <strong className="text-white">{selectedDate}</strong> at{" "}
-              <strong className="text-[#06B6D4]">{selectedTime}</strong>. A
+              <strong className="text-foreground">{selectedDate}</strong> at{" "}
+              <strong className="text-accent">{selectedTime}</strong>. A
               Google Meet invitation has been dispatched to{" "}
-              <strong className="text-white">{email}</strong>.
+              <strong className="text-foreground">{email}</strong>.
             </p>
             <div className="pt-4">
               <button
@@ -66,7 +66,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   setBooked(false);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-lg bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-mono"
+                className="px-6 py-2.5 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground text-xs font-mono"
               >
                 Close Window
               </button>
@@ -75,10 +75,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         ) : (
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
             <div>
-              <h4 className="text-lg font-semibold text-white mb-1">
+              <h4 className="text-lg font-semibold text-foreground mb-1">
                 Direct Architecture Review with Irly &amp; Yudhis
               </h4>
-              <p className="text-xs text-[#94A3B8]">
+              <p className="text-xs text-foreground-muted">
                 30-minute private call to evaluate feasibility, estimate budget,
                 and architect your roadmap.
               </p>
@@ -86,18 +86,18 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
               <div>
-                <label className="text-[10px] text-[#64748B] uppercase block mb-1">
+                <label className="text-[10px] text-foreground-faint uppercase block mb-1">
                   Selected Slot
                 </label>
-                <div className="p-2.5 rounded-md bg-[#090D16] border border-[#1E293B] text-[#06B6D4]">
+                <div className="p-2.5 rounded-md bg-surface border border-border text-accent">
                   {selectedDate}
                 </div>
               </div>
               <div>
-                <label className="text-[10px] text-[#64748B] uppercase block mb-1">
+                <label className="text-[10px] text-foreground-faint uppercase block mb-1">
                   Time
                 </label>
-                <div className="p-2.5 rounded-md bg-[#090D16] border border-[#1E293B] text-white">
+                <div className="p-2.5 rounded-md bg-surface border border-border text-foreground">
                   {selectedTime}
                 </div>
               </div>
@@ -105,7 +105,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
             <div className="space-y-3">
               <div>
-                <label className="text-[10px] font-mono text-[#64748B] uppercase block mb-1">
+                <label className="text-[10px] font-mono text-foreground-faint uppercase block mb-1">
                   Your Full Name
                 </label>
                 <input
@@ -114,12 +114,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Marcus Vance"
-                  className="w-full bg-[#090D16] border border-[#1E293B] focus:border-[#7C3AED] rounded-md px-3 py-2 text-xs text-white focus:outline-none"
+                  className="w-full bg-surface border border-border focus:border-accent rounded-md px-3 py-2 text-xs text-foreground focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] font-mono text-[#64748B] uppercase block mb-1">
+                <label className="text-[10px] font-mono text-foreground-faint uppercase block mb-1">
                   Work Email
                 </label>
                 <input
@@ -128,12 +128,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="marcus@startup.io"
-                  className="w-full bg-[#090D16] border border-[#1E293B] focus:border-[#7C3AED] rounded-md px-3 py-2 text-xs text-white focus:outline-none"
+                  className="w-full bg-surface border border-border focus:border-accent rounded-md px-3 py-2 text-xs text-foreground focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] font-mono text-[#64748B] uppercase block mb-1">
+                <label className="text-[10px] font-mono text-foreground-faint uppercase block mb-1">
                   Project Notes / Key Questions
                 </label>
                 <textarea
@@ -141,14 +141,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Briefly describe your stack, timeline, or key technical challenge..."
-                  className="w-full bg-[#090D16] border border-[#1E293B] focus:border-[#7C3AED] rounded-md p-3 text-xs text-white focus:outline-none resize-none"
+                  className="w-full bg-surface border border-border focus:border-accent rounded-md p-3 text-xs text-foreground focus:outline-none resize-none"
                 />
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 rounded-lg bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-medium text-xs font-mono transition-all shadow-[0_0_20px_rgba(124,58,237,0.4)] cursor-pointer mt-2"
+              className="w-full py-3 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground font-medium text-xs font-mono transition-all cursor-pointer mt-2"
             >
               Confirm 30-Min Discovery Session
             </button>
